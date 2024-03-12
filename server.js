@@ -21,12 +21,21 @@ app.get('/api/notes', (req, res) => {
   });
 })
 
+// POST /api/notes receives a new note to save on the request body and adds it to db.json before returning new note to client
 app.post('/api/notes', (req, res) => {
   const newNote = req.body
   newNote.id = uuidv4()
   db.push(newNote)
   fs.writeFileSync('./db/db.json', JSON.stringify(db))
   res.json(db)
+})
+
+// DELETE notes when button is clicked by removing note from db.json, saving and showing updated database on front end
+app.delete('/api/notes/:id', (req, res) => {
+  const newDb = db.filter((note) =>
+    note.id !== req.params.id)
+  fs.writeFileSync('./db/db.json', JSON.stringify(newDb))
+  readFile.json(newDb)
 })
 
 // Routes to Homepage
