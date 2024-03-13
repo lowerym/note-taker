@@ -40,17 +40,17 @@ app.delete('/api/notes/:id', (req, res) => {
 
 // Routes to Homepage
 app.get('/', (req, res) => {
-  res.sendFile(path.json(__dirname, 'public', 'index.html'))
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 // Routes to Notes page
 app.get('/notes', (req, res) => {
-  res.sendFile(path.json(__dirname, 'public', 'notes.html'))
+  res.sendFile(path.join(__dirname, 'public', 'notes.html'))
 })
 
 // Wildcard route
 app.get('*', (req, res) => {
-  res.sendFile(path.json(__dirname, 'public', 'index.html'))
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 // App listens on localhost port
